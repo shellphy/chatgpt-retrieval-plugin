@@ -1,0 +1,29 @@
+volumes:
+  postgres_data:
+    driver: local
+
+services:
+  pgvector:
+    image: ankane/pgvector:v0.5.1
+    environment:
+      POSTGRES_PASSWORD: pgvector
+      POSTGRES_USER: pgvector
+      POSTGRES_DB: pgvector
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./examples/providers/supabase/migrations/20230414142107_init_pg_vector.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5435:5432
+
+  retrieval:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - .:/code/
+    ports:
+      - 8080:8080
+
+
+  

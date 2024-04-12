@@ -35,7 +35,6 @@ assert AZCOSMOS_CONTAINER_NAME is not None
 # OpenAI Ada Embeddings Dimension
 VECTOR_DIMENSION = int(os.environ.get("EMBEDDING_DIMENSION", 256))
 
-
 # Abstract class similar to the original data store that allows API level abstraction
 class AzureCosmosDBStoreApi(ABC):
     @abstractmethod

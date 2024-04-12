@@ -9,7 +9,7 @@ create table if not exists documents (
     author text,
     url text,
     created_at timestamptz default now(),
-    embedding vector(256) -- 256 is the default dimension, change depending on dimensionality of your chosen embeddings model
+    embedding vector(1536) -- 256 is the default dimension, change depending on dimensionality of your chosen embeddings model
 );
 
 create index ix_documents_document_id on documents using btree ( document_id );
